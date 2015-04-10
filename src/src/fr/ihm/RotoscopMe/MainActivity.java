@@ -25,7 +25,8 @@ public class MainActivity extends Activity {
 
     public void createProject(View v)
     {
-        createProjectButton.setText("Bravo !");
+        Intent intentCreate = new Intent(this, CreateActivity.class);
+        startActivity(intentCreate);
     }
 
     public void openProject(View v)

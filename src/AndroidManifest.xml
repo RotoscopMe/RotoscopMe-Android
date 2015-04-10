@@ -16,6 +16,8 @@
         <activity android:name="DrawActivity"
                   android:screenOrientation="landscape">
         </activity>
-
+        <activity android:name="CreateActivity"
+                  android:screenOrientation="landscape">
+        </activity>
     </application>
 </manifest>
