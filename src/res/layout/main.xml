@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:gravity="center">
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nouveau projet"
-            android:onClick="createProject"
-            android:id="@+id/create_project" />
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ouvrir un projet"
-            android:onClick="openProject"
-            android:id="@+id/open_project" />
-</LinearLayout>
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RotoscopMe"
+            android:id="@+id/textView" android:layout_gravity="center" android:textSize="60dp"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:gravity="center" android:weightSum="1">
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nouveau projet"
+                android:onClick="createProject"
+                android:id="@+id/create_project" />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ouvrir un projet"
+                android:onClick="openProject"
+                android:id="@+id/open_project" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,1 +1,5 @@
 src/.idea/
+.idea/
+out/
+src/gen/fr/ihm/RotoscopMe/BuildConfig.java
+src/RotoscopMe-Android.iml
