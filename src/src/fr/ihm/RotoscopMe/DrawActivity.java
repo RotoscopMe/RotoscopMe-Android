@@ -9,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.*;
 
+import static fr.ihm.RotoscopMe.R.layout.drawer_list_item;
+
 
 public class DrawActivity extends Activity {
 
@@ -17,6 +19,7 @@ public class DrawActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+    private Button button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,13 +27,16 @@ public class DrawActivity extends Activity {
         setContentView(R.layout.draw);
 
         drawzone = (DrawZone) findViewById(R.id.drawzone);
+        button = (Button) findViewById(R.id.button);
+
+        mPlanetTitles = new String[]{"Enregistrer","Enregistrer sous", "Exporter en image", "Exporter en vidéo","Partager","Préférences","Fermer le projet","Quitter","Aide","A propos"};
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        // Set the adapter for the list view
-       // mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-             //   R.layout.drawer_list_item, mPlanetTitles));
+       //Set the adapter for the list view
+       mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+               drawer_list_item, mPlanetTitles));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -56,17 +62,19 @@ public class DrawActivity extends Activity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-            selectItem(position);
+            if (position == 0 ){
+                button.setText("Bravo !");
+            };
         }
     }
 
     /** Swaps fragments in the main content view */
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on position
-    //    Fragment fragment = new PlanetFragment();
-        Bundle args = new Bundle();
-      //  args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-       // fragment.setArguments(args);
+       // Fragment fragment = new PlanetFragment();
+        //Bundle args = new Bundle();
+      //args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
+     // fragment.setArguments(args);
 
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getFragmentManager();

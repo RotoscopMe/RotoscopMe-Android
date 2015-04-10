@@ -112,6 +112,12 @@ public class DrawZone extends View {
 // kill this so we don't double draw
         path.reset();
     }
+
+    public void clearCanvas()
+    {
+        createCanvas();
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event){
         float x = event.getX();
