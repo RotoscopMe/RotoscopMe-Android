@@ -9,7 +9,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="RotoscopMe"
-            android:id="@+id/textView" android:layout_gravity="center" android:textSize="60dp"/>
+            android:id="@+id/title" android:layout_gravity="center" android:textSize="60dp"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="horizontal"

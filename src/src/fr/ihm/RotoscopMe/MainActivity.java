@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+    protected TextView title;
     protected Button createProjectButton;
     protected Button openProjectButton;
 
@@ -16,6 +18,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        title = (TextView) findViewById(R.id.title);
         createProjectButton = (Button) findViewById(R.id.create_project);
         openProjectButton = (Button) findViewById(R.id.open_project);
     }
