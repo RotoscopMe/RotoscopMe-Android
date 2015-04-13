@@ -69,7 +69,7 @@ public class DrawZone extends View {
         paint = new Paint();
         paint.setAntiAlias(true);
         paint.setDither(true);
-        paint.setColor(Color.RED);
+        paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeJoin(Paint.Join.ROUND);
         paint.setStrokeCap(Paint.Cap.ROUND);
@@ -83,6 +83,7 @@ public class DrawZone extends View {
         paintRubber.setStrokeJoin(Paint.Join.ROUND);
         paintRubber.setStrokeCap(Paint.Cap.ROUND);
         paintRubber.setStrokeWidth(12);
+        //paintRubber.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
 
         currentPaint = paint;
 
@@ -171,6 +172,11 @@ public class DrawZone extends View {
         paint.setStrokeWidth(size);
     }
 
+    public void setSizeRubber(float size)
+    {
+        paintRubber.setStrokeWidth(size);
+    }
+
     public void getPen()
     {
         currentPaint = paint;
@@ -179,6 +185,26 @@ public class DrawZone extends View {
     public void getRubber()
     {
         currentPaint = paintRubber;
+    }
+
+    public void setBlack()
+    {
+        paint.setColor(Color.BLACK);
+    }
+
+    public void setRed()
+    {
+        paint.setColor(Color.RED);
+    }
+
+    public void setBlue()
+    {
+        paint.setColor(Color.BLUE);
+    }
+
+    public void setGreen()
+    {
+        paint.setColor(Color.GREEN);
     }
 }
 

@@ -22,6 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/noir"
+                android:onClick="afficheColor"
                 android:id="@+id/color" />
 
         <ImageButton
@@ -41,15 +42,133 @@
                 android:layout_gravity="top|left"
                 android:layout_marginLeft="120dp"
                 android:id="@+id/rubber" />
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/undo"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="120dp"
+                android:id="@+id/undo" />
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/redo"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="50dp"
+                android:id="@+id/redo" />
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/menubutton"
+                android:layout_gravity="top|right"
+                android:id="@+id/menu" />
+
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|left"
+                android:visibility="invisible"
+                android:id="@+id/listcolor">
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setBlack"
+                    android:src="@drawable/noir"
+                    android:id="@+id/black" />
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setRed"
+                    android:src="@drawable/rouge"
+                    android:id="@+id/red" />
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setBlue"
+                    android:src="@drawable/bleu"
+                    android:id="@+id/blue" />
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setGreen"
+                    android:src="@drawable/vert"
+                    android:id="@+id/green" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|left"
+                android:layout_marginLeft="50dp"
+                android:visibility="invisible"
+                android:id="@+id/listpen">
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setSmallPen"
+                    android:src="@drawable/smallpen"
+                    android:id="@+id/smallpen" />
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setMediumPen"
+                    android:src="@drawable/mediumpen"
+                    android:id="@+id/mediumpen" />
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setBigPen"
+                    android:src="@drawable/bigpen"
+                    android:id="@+id/bigpen" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|left"
+                android:layout_marginLeft="120dp"
+                android:visibility="invisible"
+                android:id="@+id/listrubber">
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setSmallRubber"
+                    android:src="@drawable/smallrubber"
+                    android:id="@+id/smallrubber" />
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setMediumRubber"
+                    android:src="@drawable/mediumrubber"
+                    android:id="@+id/mediumrubber" />
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setBigRubber"
+                    android:src="@drawable/bigrubber"
+                    android:id="@+id/bigrubber" />
+
+        </LinearLayout>
+
     </FrameLayout>
-    <!-- The navigation drawer -->
-    <ListView android:id="@+id/left_drawer"
-              android:layout_width="240dp"
-              android:layout_height="match_parent"
-              android:layout_gravity="start"
-              android:choiceMode="singleChoice"
-              android:divider="@android:color/transparent"
-              android:dividerHeight="0dp"
-              android:background="#111">
-    </ListView>
+
 </android.support.v4.widget.DrawerLayout>

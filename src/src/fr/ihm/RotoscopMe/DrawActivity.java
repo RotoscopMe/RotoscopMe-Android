@@ -23,12 +23,31 @@ public class DrawActivity extends Activity {
     protected DrawZone drawzone;
     private String[] mPlanetTitles;
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
 
     private ImageButton buttonColor;
     private ImageButton buttonPen;
     private ImageButton buttonRubber;
+
+    private ImageButton buttonUndo;
+    private ImageButton buttonRedo;
+
+    private ImageButton buttonMenu;
+
+    private LinearLayout listColor;
+    private ImageButton buttonBlack;
+    private ImageButton buttonRed;
+    private ImageButton buttonBlue;
+    private ImageButton buttonGreen;
+
+    private LinearLayout listPen;
+    private ImageButton buttonSmallPen;
+    private ImageButton buttonMediumPen;
+    private ImageButton buttonBigPen;
+
+    private LinearLayout listRubber;
+    private ImageButton buttonSmallRubber;
+    private ImageButton buttonMediumRubber;
+    private ImageButton buttonBigRubber;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,35 +61,29 @@ public class DrawActivity extends Activity {
         buttonPen = (ImageButton) findViewById(R.id.pen);
         buttonRubber = (ImageButton) findViewById(R.id.rubber);
 
+        buttonUndo= (ImageButton) findViewById(R.id.undo);
+        buttonRedo = (ImageButton) findViewById(R.id.redo);
+
+        buttonMenu = (ImageButton) findViewById(R.id.menu);
+
+        listColor = (LinearLayout) findViewById(R.id.listcolor);
+        buttonBlack = (ImageButton) findViewById(R.id.black);
+        buttonRed = (ImageButton) findViewById(R.id.red);
+        buttonBlue = (ImageButton) findViewById(R.id.blue);
+        buttonGreen = (ImageButton) findViewById(R.id.green);
+
+        listPen = (LinearLayout) findViewById(R.id.listpen);
+        buttonSmallPen = (ImageButton) findViewById(R.id.smallpen);
+        buttonMediumPen = (ImageButton) findViewById(R.id.mediumpen);
+        buttonBigPen = (ImageButton) findViewById(R.id.bigpen);
+
+        listRubber = (LinearLayout) findViewById(R.id.listrubber);
+        buttonSmallRubber = (ImageButton) findViewById(R.id.smallrubber);
+        buttonMediumRubber = (ImageButton) findViewById(R.id.mediumrubber);
+        buttonBigRubber = (ImageButton) findViewById(R.id.bigrubber);
+
         mPlanetTitles = new String[]{"Enregistrer","Enregistrer sous", "Exporter en image", "Exporter en vidéo","Partager","Préférences","Fermer le projet","Quitter","Aide","A propos"};
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
-       //Set the adapter for the list view
-       mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-               drawer_list_item, mPlanetTitles));
-        // Set the list's click listener
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
-
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);;
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-
-        // Set the drawer toggle as the DrawerListener
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         //Two-Finger Drag Gesture detection
         DrawerLayout TextLoggerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -85,33 +98,32 @@ public class DrawActivity extends Activity {
 
                 });
 
-    }
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-            if (position == 0 ){
-                Log.d("Menu : ", "Enregistrer");
-            };
-        }
-    }
+        buttonColor.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                listColor.setVisibility(View.VISIBLE);
+                buttonColor.setVisibility(View.INVISIBLE);
+                return false;
+            }
+        });
 
-    /** Swaps fragments in the main content view */
-    private void selectItem(int position) {
-        // Create a new fragment and specify the planet to show based on position
-       // Fragment fragment = new PlanetFragment();
-        //Bundle args = new Bundle();
-      //args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-     // fragment.setArguments(args);
+        buttonPen.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                listPen.setVisibility(View.VISIBLE);
+                buttonPen.setVisibility(View.INVISIBLE);
+                return false;
+            }
+        });
 
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getFragmentManager();
-       // fragmentManager.beginTransaction()
-         //       .replace(R.id.content_frame, fragment)
-           //     .commit();
-
-        // Highlight the selected item, update the title, and close the drawer
-        mDrawerList.setItemChecked(position, true);
-        mDrawerLayout.closeDrawer(mDrawerList);
+        buttonRubber.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                listRubber.setVisibility(View.VISIBLE);
+                buttonRubber.setVisibility(View.INVISIBLE);
+                return false;
+            }
+        });
     }
 
     void handleTouch(MotionEvent m){
@@ -207,12 +219,95 @@ public class DrawActivity extends Activity {
     public void getPen(View v)
     {
         drawzone.getPen();
-        Log.d("Clear : ", "Clear");
     }
 
     public void getRubber(View v)
     {
         drawzone.getRubber();
-        Log.d("Clear : ", "Clear");
+    }
+
+    public void setSmallPen(View v)
+    {
+        drawzone.setSizePen(8);
+        buttonPen.setVisibility(View.VISIBLE);
+        listPen.setVisibility(View.INVISIBLE);
+    }
+
+    public void setMediumPen(View v)
+    {
+        drawzone.setSizePen(12);
+        buttonPen.setVisibility(View.VISIBLE);
+        listPen.setVisibility(View.INVISIBLE);
+    }
+
+    public void setBigPen(View v)
+    {
+        drawzone.setSizePen(16);
+        buttonPen.setVisibility(View.VISIBLE);
+        listPen.setVisibility(View.INVISIBLE);
+    }
+
+    public void setSmallRubber(View v)
+    {
+        drawzone.setSizeRubber(8);
+        buttonRubber.setVisibility(View.VISIBLE);
+        listRubber.setVisibility(View.INVISIBLE);
+    }
+
+    public void setMediumRubber(View v)
+    {
+        drawzone.setSizeRubber(12);
+        buttonRubber.setVisibility(View.VISIBLE);
+        listRubber.setVisibility(View.INVISIBLE);
+    }
+
+    public void setBigRubber(View v)
+    {
+        drawzone.setSizeRubber(16);
+        buttonRubber.setVisibility(View.VISIBLE);
+        listRubber.setVisibility(View.INVISIBLE);
+    }
+
+
+    public void setBlack(View v)
+    {
+        buttonColor.setImageResource(R.drawable.noir);
+        drawzone.setBlack();
+
+        buttonColor.setVisibility(View.VISIBLE);
+        listColor.setVisibility(View.INVISIBLE);
+    }
+
+    public void setRed(View v)
+    {
+        buttonColor.setImageResource(R.drawable.rouge);
+        drawzone.setRed();
+
+        buttonColor.setVisibility(View.VISIBLE);
+        listColor.setVisibility(View.INVISIBLE);
+    }
+
+    public void setBlue(View v)
+    {
+        buttonColor.setImageResource(R.drawable.bleu);
+        drawzone.setBlue();
+
+        buttonColor.setVisibility(View.VISIBLE);
+        listColor.setVisibility(View.INVISIBLE);
+    }
+
+    public void setGreen(View v)
+    {
+        buttonColor.setImageResource(R.drawable.vert);
+        drawzone.setGreen();
+
+        buttonColor.setVisibility(View.VISIBLE);
+        listColor.setVisibility(View.INVISIBLE);
+    }
+
+    public void afficheColor(View v)
+    {
+        listColor.setVisibility(View.VISIBLE);
+        buttonColor.setVisibility(View.INVISIBLE);
     }
 }
