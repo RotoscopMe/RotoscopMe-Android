@@ -21,9 +21,26 @@
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/noir"
+                android:id="@+id/color" />
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="getPen"
                 android:src="@drawable/pen"
-                android:onClick="clear"
+                android:layout_gravity="top|left"
+                android:layout_marginLeft="50dp"
                 android:id="@+id/pen" />
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="getRubber"
+                android:src="@drawable/rubber"
+                android:layout_gravity="top|left"
+                android:layout_marginLeft="120dp"
+                android:id="@+id/rubber" />
     </FrameLayout>
     <!-- The navigation drawer -->
     <ListView android:id="@+id/left_drawer"

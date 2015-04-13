@@ -25,7 +25,10 @@ public class DrawActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+
+    private ImageButton buttonColor;
     private ImageButton buttonPen;
+    private ImageButton buttonRubber;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,10 @@ public class DrawActivity extends Activity {
 
         drawzone = (DrawZone) findViewById(R.id.drawzone);
         drawzone.setParent(this);
-        buttonPen = (ImageButton) findViewById(R
-                .id.pen);
+
+        buttonColor = (ImageButton) findViewById(R.id.color);
+        buttonPen = (ImageButton) findViewById(R.id.pen);
+        buttonRubber = (ImageButton) findViewById(R.id.rubber);
 
         mPlanetTitles = new String[]{"Enregistrer","Enregistrer sous", "Exporter en image", "Exporter en vidéo","Partager","Préférences","Fermer le projet","Quitter","Aide","A propos"};
 
@@ -79,6 +84,7 @@ public class DrawActivity extends Activity {
                     }
 
                 });
+
     }
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -198,9 +204,15 @@ public class DrawActivity extends Activity {
         }
     }
 
-    public void clear()
+    public void getPen(View v)
     {
-        drawzone.clearCanvas();
+        drawzone.getPen();
+        Log.d("Clear : ", "Clear");
+    }
+
+    public void getRubber(View v)
+    {
+        drawzone.getRubber();
         Log.d("Clear : ", "Clear");
     }
 }

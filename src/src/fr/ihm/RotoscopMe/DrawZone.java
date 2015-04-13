@@ -13,6 +13,8 @@ public class DrawZone extends View {
     private Canvas canvas;
     private Bitmap bitmap;
     private Paint paint;
+    private Paint paintRubber;
+    private Paint currentPaint;
     private Paint bitmapPaint;
     private Paint backgroundPaint;
     private Path path;
@@ -73,6 +75,17 @@ public class DrawZone extends View {
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeWidth(12);
 
+        paintRubber = new Paint();
+        paintRubber.setAntiAlias(true);
+        paintRubber.setDither(true);
+        paintRubber.setColor(Color.WHITE);
+        paintRubber.setStyle(Paint.Style.STROKE);
+        paintRubber.setStrokeJoin(Paint.Join.ROUND);
+        paintRubber.setStrokeCap(Paint.Cap.ROUND);
+        paintRubber.setStrokeWidth(12);
+
+        currentPaint = paint;
+
         backgroundPaint = new Paint();
         backgroundPaint.setColor(Color.WHITE);
         backgroundPaint.setStyle(Paint.Style.FILL);
@@ -94,7 +107,7 @@ public class DrawZone extends View {
     {
         super.onDraw(c);
         c.drawBitmap(bitmap,0,0,bitmapPaint);
-        c.drawPath(path, paint);
+        c.drawPath(path, currentPaint);
     }
 
     public void touchStart(float x, float y) {
@@ -115,7 +128,7 @@ public class DrawZone extends View {
     public void touchEnd() {
         path.lineTo(mX, mY);
 
-        canvas.drawPath(path, paint);
+        canvas.drawPath(path, currentPaint);
 // kill this so we don't double draw
         path.reset();
     }
@@ -151,6 +164,21 @@ public class DrawZone extends View {
                 break;
         }*/
         return true;
+    }
+
+    public void setSizePen(float size)
+    {
+        paint.setStrokeWidth(size);
+    }
+
+    public void getPen()
+    {
+        currentPaint = paint;
+    }
+
+    public void getRubber()
+    {
+        currentPaint = paintRubber;
     }
 }
 
