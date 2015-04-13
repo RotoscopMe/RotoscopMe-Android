@@ -25,6 +25,8 @@ public class DrawZone extends View {
     private float mX;
     private float mY;
 
+    DrawActivity parent;
+
     public DrawZone(Context c)
     {
         super(c);
@@ -44,6 +46,11 @@ public class DrawZone extends View {
         super(c, attr, defStyle);
         context=c;
         createPainters();
+    }
+
+    public void setParent(DrawActivity parent)
+    {
+        this.parent = parent;
     }
 
     public void createCanvas()
@@ -90,12 +97,12 @@ public class DrawZone extends View {
         c.drawPath(path, paint);
     }
 
-    private void touchStart(float x, float y) {
+    public void touchStart(float x, float y) {
         path.moveTo(x, y);
         mX = x;
         mY = y;
     }
-    private void touchMove(float x, float y) {
+    public void touchMove(float x, float y) {
         float dx = Math.abs(x - mX);
         float dy = Math.abs(y - mY);
 
@@ -105,11 +112,16 @@ public class DrawZone extends View {
             mY = y;
         }
     }
-    private void touchEnd() {
+    public void touchEnd() {
         path.lineTo(mX, mY);
 
         canvas.drawPath(path, paint);
 // kill this so we don't double draw
+        path.reset();
+    }
+
+    public void touchUndo()
+    {
         path.reset();
     }
 
@@ -120,7 +132,8 @@ public class DrawZone extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event){
-        float x = event.getX();
+        parent.handleTouch(event);
+        /*float x = event.getX();
         float y = event.getY();
 
         switch (event.getAction()) {
@@ -136,7 +149,7 @@ public class DrawZone extends View {
                 touchEnd();
                 invalidate();
                 break;
-        }
+        }*/
         return true;
     }
 }
