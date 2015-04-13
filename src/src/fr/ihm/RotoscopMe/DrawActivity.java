@@ -25,7 +25,7 @@ public class DrawActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-    private Button button;
+    private ImageButton buttonPen;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,8 @@ public class DrawActivity extends Activity {
 
         drawzone = (DrawZone) findViewById(R.id.drawzone);
         drawzone.setParent(this);
-        button = (Button) findViewById(R.id.button);
+        buttonPen = (ImageButton) findViewById(R
+                .id.pen);
 
         mPlanetTitles = new String[]{"Enregistrer","Enregistrer sous", "Exporter en image", "Exporter en vidéo","Partager","Préférences","Fermer le projet","Quitter","Aide","A propos"};
 
@@ -83,7 +84,7 @@ public class DrawActivity extends Activity {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             if (position == 0 ){
-                button.setText("Bravo !");
+                Log.d("Menu : ", "Enregistrer");
             };
         }
     }
@@ -155,7 +156,7 @@ public class DrawActivity extends Activity {
                         drawzone.touchUndo();
                         drawzone.invalidate();
                     }
-                    
+
                     break;
             }
 
@@ -195,5 +196,11 @@ public class DrawActivity extends Activity {
             GLOBAL_CURRENT_POSITION_X = -1;
             GLOBAL_DESSIN = -1;
         }
+    }
+
+    public void clear()
+    {
+        drawzone.clearCanvas();
+        Log.d("Clear : ", "Clear");
     }
 }
