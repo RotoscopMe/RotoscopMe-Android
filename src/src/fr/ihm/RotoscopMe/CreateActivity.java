@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import org.w3c.dom.Text;
 
 public class CreateActivity extends Activity {
 
@@ -17,6 +19,8 @@ public class CreateActivity extends Activity {
     protected TextView title;
     protected Button getVideoButton;
     protected Button captureVideoButton;
+    protected TextView name;
+    protected EditText editName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,8 @@ public class CreateActivity extends Activity {
         setContentView(R.layout.create);
 
         title = (TextView) findViewById(R.id.title);
+        name = (TextView) findViewById(R.id.name);
+        editName = (EditText) findViewById(R.id.editName);
         getVideoButton = (Button) findViewById(R.id.get_video);
         captureVideoButton = (Button) findViewById(R.id.capture_video);
     }
